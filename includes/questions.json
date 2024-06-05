@@ -1,0 +1,114 @@
+{
+    "intro": [
+        "<p class='pb-8 font-bold text-2xl leading-normal'>Willkommen zum Cybersecurity Quiz!</p>",
+        "Testen Sie Ihr Wissen über Computersicherheit mit diesem Quiz.",
+        "Das Quiz besteht aus 10 Fragen, die Sie beantworten müssen.",
+        "Jede Frage hat 3 Antwortmöglichkeiten, von denen nur eine richtig ist.",
+        "Wählen Sie die Antwort, die Ihrer Meinung nach korrekt ist, und klicken Sie auf 'Weiter', um zur nächsten Frage zu gelangen.",
+        "Viel Spaß und viel Erfolg!",
+        "Um an unserem Quiz teilzunehmen, benötigen wir Ihre Einwilligung zur Verarbeitung Ihrer E-Mail-Adresse. Diese wird ausschließlich dazu verwendet, um Sie im Falle eines Gewinns zu benachrichtigen.",
+        "<input type='checkbox' name='' id=''>",
+        "<label for=''>Ich stimme der <a>Datenverarbeitung</a> meiner E-Mail-Adresse zu.</label>",
+        "<input type='email' name='' id=''>",
+        "<p>Ich erkläre mich damit einverstanden, dass meine E-Mail-Adresse von <a href='https://www.hs-harz.de'>www.hs-harz.de</a> ausschließlich zu dem Zweck gespeichert und verarbeitet wird, mich im Falle eines Gewinns zu benachrichtigen. Ich habe die Datenschutzerklärung gelesen und akzeptiere diese. Mir ist bekannt, dass ich meine Einwilligung jederzeit widerrufen kann.</p>",
+        "<div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Start</a></div>"
+    ],
+    "outro": [
+        "<p class='pb-8 font-bold text-2xl leading-normal'>Vielen Dank für Ihre Teilnahme!</p>",
+        "Sie haben das Cybersecurity Quiz erfolgreich abgeschlossen.",
+        "Die Gewinner werden im Anschluss per E-Mail benachrichtigt.",
+        "<div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Nochmal spielen</a></div>"
+    ],
+    "questions": [
+        {
+            "question": "Welches der Passwörter ist das sicherste?",
+            "answers": [
+                "123456",
+                "Passwort",
+                "D!2#rT$9"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Was ist Phishing?",
+            "answers": [
+                "Ein Angelsport",
+                "Eine Methode, um sensible Informationen durch gefälschte Kommunikation zu stehlen",
+                "Eine Art von Computer-Virus"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche der folgenden Aussagen beschreibt Social Engineering am besten?",
+            "answers": [
+                "Ein Algorithmus zur Verschlüsselung von Daten",
+                "Die Kunst, Menschen dazu zu bringen, sensible Informationen preiszugeben",
+                "Ein System zur Sicherung von Netzwerken"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was ist eine Firewall?",
+            "answers": [
+                "Ein Sicherheitsprotokoll für den Zugriff auf das Internet",
+                "Eine physische Barriere, die das Eindringen von Hackern in ein Netzwerk verhindert",
+                "Eine Software oder Hardware, die den Datenverkehr zwischen Netzwerken kontrolliert"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Welche der folgenden Aktivitäten ist eine gute Sicherheitspraxis, um persönliche Daten zu schützen?",
+            "answers": [
+                "Öffentliche WLAN-Netzwerke ohne Passwort verwenden",
+                "Sensible Informationen wie Passwörter und Kreditkartennummern per E-Mail senden",
+                "Regelmäßiges Aktualisieren von Passwörtern und Verwendung von Zwei-Faktor-Authentifizierung"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Was ist ein Botnet?",
+            "answers": [
+                "Ein Computer, der mit Schadsoftware infiziert ist und von einem Hacker ferngesteuert wird",
+                "Ein spezielles Betriebssystem für Roboter",
+                "Ein soziales Netzwerk für IT-Experten"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "question": "Was bedeutet VPN?",
+            "answers": [
+                "Virtuelles Privates Netzwerk",
+                "Vernetztes Proxy-Netzwerk",
+                "Virtuelle Persönliche Navigation"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "question": "Was ist Malware?",
+            "answers": [
+                "Eine Software, die das System beschleunigt",
+                "Ein bösartiges Programm, das entwickelt wurde, um Schaden anzurichten oder auf sensible Daten zuzugreifen",
+                "Eine legale Software für Computerspiele"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was ist ein Patch in Bezug auf Computersicherheit?",
+            "answers": [
+                "Ein Stück Stoff, um eine Sicherheitslücke in einem Computer zu bedecken",
+                "Eine schnelle Lösung für ein technisches Problem",
+                "Ein Software-Update, das entwickelt wurde, um eine Sicherheitslücke zu beheben"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Welche der folgenden Optionen ist ein Beispiel für Multifaktor-Authentifizierung?",
+            "answers": [
+                "Ein Passwort, gefolgt von einem Fingerabdruck-Scan",
+                "Ein langes Passwort",
+                "Ein sicheres Passwort, das regelmäßig geändert wird"
+            ],
+            "correctAnswer": 0
+        }
+    ]
+}
