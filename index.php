@@ -1,6 +1,13 @@
 <?php
     session_start();
-    $data = json_decode(file_get_contents('includes/questions.json'), true);
+
+    // use db_adapter
+    const APP_NAME = 'Quizflow';
+    include_once __DIR__ . '/includes/core/db_adapter.php';
+    $dbAdapter = new \Quizflow\Core\DatabaseAdapter();
+
+    // get questions
+    $data = json_decode(file_get_contents(QUIZFLOW_DATA), true);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,15 +55,68 @@
             </div>
         HTML;
     } elseif (isset($_GET['submit'])) {
+        // init params
+        $param = [];
+
+        // get time
         $_SESSION['submitTime'] = microtime(true);
-        $time = $_SESSION['submitTime'] - $_SESSION['startTime'];
-        $time = number_format($time, 2);
+        $param['time'] = $_SESSION['submitTime'] - $_SESSION['startTime'];
+        $param['time'] = number_format($param['time'], 2);
+
+        // create code
+        file_exists(QUIZFLOW_CODE) ?: file_put_contents(QUIZFLOW_CODE, '000000');
+        $param['code'] = str_pad((int)file_get_contents(QUIZFLOW_CODE) + 1, 6, '0', STR_PAD_LEFT);
+        file_put_contents(QUIZFLOW_CODE, $param['code']);
+
+        // get answers
+        $json = file_get_contents('questions.json');
+        $data = json_decode($json, true);
+
+        // get answers
+        $param['answers'] = [];
+        foreach ($_POST as $inputName => $userAnswer) {
+            // sanitize input name and userAnswer
+            if (preg_match('/^q_/', $inputName)) {
+                if (ctype_digit($userAnswer)) {
+                    // iterate over questions
+                    foreach ($data['questions'] as $question) {
+                        // check if inputName is equal to question name
+                        if ($inputName == $question['name']) {
+                            // check answer
+                            $isCorrect = $userAnswer == $question['correctAnswer'] ? 'true' : 'false';
+                
+                            // Add the answer to the array
+                            $param['answers'][] = [
+                                'name' => $inputName,
+                                'isCorrect' => $isCorrect
+                            ];
+                
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        // insert answers
+        $query = 'INSERT INTO answers (code, time, answers) VALUES (:code, :time, :answers)';
+        $params = [
+            'code' => $param['code'],
+            'time' => $param['time'],
+            'answers' => $param['answers']
+        ];
+        $dbAdapter->db_query($query, $params);
 
         echo '<div class="container mx-auto w-[95%] md:w-[60%] m-12"><div class="md:w-full bg-white shadow-lg rounded-2xl p-8 flex flex-col gap-4">';
 
         foreach ($data['outro'] as $outroItem) {
             echo $outroItem;
         }
+
+        echo "
+            <p class='pb-8 font-bold text-2xl leading-normal'>Ihr Code: {$param['code']}</p>
+            <div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Nochmal spielen</a></div>
+        ";
 
         echo '</div></div>';
     } else {

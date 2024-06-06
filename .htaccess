@@ -1,6 +1,0 @@
-<Files admin.php>
-    AuthType Basic
-    AuthName "Restricted Content"
-    AuthUserFile ./.htpasswd
-    Require valid-user
-</Files>

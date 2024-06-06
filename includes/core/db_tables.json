@@ -1,7 +1,7 @@
 {
     "answers": {
         "uuid": "UUID DEFAULT gen_random_uuid() NOT NULL",
-        "email": "VARCHAR(1020)",
+        "code": "INT",
         "time": "TIMESTAMP",
         "answer": "VARCHAR(1020)"
     }
