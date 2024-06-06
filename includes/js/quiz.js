@@ -4,8 +4,8 @@ $(document).ready(function() {
         var fieldset = $(this).closest('fieldset');
         fieldset.find('.option-label').removeClass('border-blue-500');
         if ($(this).is(':checked')) {
-            // disable all inputs in fieldset
-            fieldset.find('input[type=radio]').prop('disabled', true);
+            // remove the highlight of previously selected answers
+            fieldset.find('.option-label').removeClass('border-green-500 border-red-500 bg-gray-200');
 
             // highlight selected answer
             var selectedLabel = $('label[for=' + $(this).attr('id') + ']');
@@ -66,8 +66,17 @@ $(document).ready(function() {
             currentQuestion++;
             showQuestion(currentQuestion);
         } else if ($(this).attr('type') === 'submit') {
+            // Enable all radio buttons before submitting the form
+            $('input[type=radio]').prop('disabled', false);
             $('#quizForm').submit();
         }
+    });
+
+    // Update the submit button to only call a JavaScript function
+    $('#quizForm').on('submit', function(e) {
+        e.preventDefault();
+        $('input[type=radio]').prop('disabled', false);
+        this.submit();
     });
 
     // progress bar

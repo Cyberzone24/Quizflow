@@ -2,7 +2,7 @@
     "intro": [
         "<p class='pb-8 font-bold text-2xl leading-normal'>Willkommen zum Cybersecurity Quiz!</p>",
         "<p>Testen Sie Ihr Wissen über Computersicherheit mit diesem Quiz.<br><br>",
-        "Das Quiz besteht aus 10 Fragen, die Sie beantworten müssen. Jede Frage hat 3 Antwortmöglichkeiten, von denen nur eine richtig ist.<br><br>",
+        "Das Quiz besteht aus 10 Fragen, jede Frage hat 3 Antwortmöglichkeiten, von denen nur eine richtig ist.<br><br>",
         "Wählen Sie die Antwort, die Ihrer Meinung nach korrekt ist, und klicken Sie auf 'Weiter', um zur nächsten Frage zu gelangen. Um das Quiz zu starten, klicken Sie auf 'Start'</p>",
         "<div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Start</a></div>"
     ],

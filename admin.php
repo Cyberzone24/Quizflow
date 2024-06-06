@@ -17,51 +17,65 @@
 <body class="flex flex-col justify-center bg-gray-200">
     <?php
         // Fetch all data from the database
-        $data = $dbAdapter->db_query('SELECT * FROM answers');
+        $data = $dbAdapter->db_query('SELECT * FROM answers ORDER BY timestamp DESC');
     
         // Calculate the percentage of correct answers
         foreach ($data as $key => $value) {
-            // Decode the JSON string into an array
-            $answers = json_decode($value['answers'], true);
+            // Check if the key "answer" exists and is not null
+            if (isset($value['answer']) && $value['answer'] !== null) {
+                // Decode the JSON string into an array
+                $answers = json_decode($value['answer'], true);
     
-            $totalAnswers = count($answers);
-            $correctAnswers = 0;
-            foreach ($answers as $answer) {
-                if ($answer['isCorrect'] == 'true') {
-                    $correctAnswers++;
+                $totalAnswers = count($answers);
+                $correctAnswers = 0;
+                foreach ($answers as $answer) {
+                    if ($answer['isCorrect'] == 'true') {
+                        $correctAnswers++;
+                    }
                 }
+                // Check if totalAnswers is greater than zero before performing the division
+                if ($totalAnswers > 0) {
+                    $data[$key]['correctPercentage'] = ($correctAnswers / $totalAnswers) * 100;
+                } else {
+                    $data[$key]['correctPercentage'] = 0;
+                }
+                $data[$key]['answers'] = $answers; // Replace the JSON string with the decoded array
             }
-            $data[$key]['correctPercentage'] = ($correctAnswers / $totalAnswers) * 100;
-            $data[$key]['answers'] = $answers; // Replace the JSON string with the decoded array
         }
     ?>
-
+    
     <!-- Display the data in a table -->
-    <table>
-        <tr>
-            <th>Time</th>
-            <th>Name</th>
-            <th>Correct Answers (%)</th>
-        </tr>
-        <?php foreach ($data as $entry): ?>
+    <div class="m-4 bg-white shadow-lg rounded-2xl p-8 text-left">
+        <table class="w-full">
             <tr>
-                <td><?php echo $entry['time']; ?></td>
-                <td><?php echo $entry['name']; ?></td>
-                <td><?php echo $entry['correctPercentage']; ?></td>
+                <th class="p-2 border-b max-w-lg overflow-auto">Timestamp</th>
+                <th class="p-2 border-b max-w-lg overflow-auto">Code</th>
+                <th class="p-2 border-b max-w-lg overflow-auto">Time</th>
+                <th class="p-2 border-b max-w-lg overflow-auto">Correct Answers (%)</th>
             </tr>
-            <tr>
-                <td colspan="2">
-                    <details>
-                        <summary>View Answers</summary>
-                        <ul>
-                            <?php foreach ($entry['answers'] as $answer): ?>
-                                <li><?php echo $answer['name'] . ': ' . ($answer['isCorrect'] == 'true' ? 'Correct' : 'Incorrect'); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </details>
-                </td>
-            </tr>
-        <?php endforeach; ?>
-    </table>
+            <?php foreach ($data as $entry): ?>
+                <tr>
+                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['timestamp']) ? date('H:i:s \U\h\r, d.m.Y', strtotime($entry['timestamp'])) : ''; ?></td>
+                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['code']) ? str_pad($entry['code'], 6, '0', STR_PAD_LEFT) : ''; ?></td>
+                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['time']) ? $entry['time'] : ''; ?></td>
+                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['correctPercentage']) ? $entry['correctPercentage'] : ''; ?></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="p-2 border-b max-w-lg overflow-auto">
+                        <details>
+                            <summary>View Answers</summary>
+                            <ul>
+                                <?php if (isset($entry['answers']) && is_array($entry['answers'])): ?>
+                                    <?php foreach ($entry['answers'] as $answer): ?>
+                                        <li><?php echo $answer['name'] . ': ' . ($answer['isCorrect'] == 'true' ? 'Correct' : 'Incorrect'); ?></li>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </ul>
+                        </details>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </table>
+    </div>
 </body>
 </html>

@@ -1,5 +1,9 @@
 <?php
 namespace Quizflow\Core;
+// Display all errors during development
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 // check if APP_NAME is defined
 if (!defined('APP_NAME')) {

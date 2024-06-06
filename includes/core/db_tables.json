@@ -1,8 +1,9 @@
 {
     "answers": {
         "uuid": "UUID DEFAULT gen_random_uuid() NOT NULL",
+        "timestamp": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
         "code": "INT",
-        "time": "TIMESTAMP",
+        "time": "FLOAT",
         "answer": "VARCHAR(1020)"
     }
 }

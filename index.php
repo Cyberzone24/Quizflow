@@ -24,9 +24,9 @@
     if (isset($_GET['start'])) {
         $_SESSION['startTime'] = microtime(true);
         echo <<<HTML
-            <div class="progress-bar bg-green-500 h-2 w-0"></div>
+            <div class="progress-bar bg-green-500 h-2 w-0 fixed top-0 left-0"></div>
             <div class="container mx-auto w-[95%] md:w-[60%] m-12">
-                <form id="quizForm" class="md:space-y-4 md:flex md:flex-col md:gap-6" method="post" action="?submit">
+                <form id="quizForm" class="md:space-y-4 md:flex md:flex-col md:gap-6" method="POST" action="?submit">
         HTML;
             $questionNumber = 1;
             foreach ($data['questions'] as $question) {
@@ -54,7 +54,7 @@
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline" id="next">Weiter</button>
             </div>
         HTML;
-    } elseif (isset($_GET['submit'])) {
+    } elseif (isset($_GET['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
         // init params
         $param = [];
 
@@ -69,41 +69,43 @@
         file_put_contents(QUIZFLOW_CODE, $param['code']);
 
         // get answers
-        $json = file_get_contents('questions.json');
+        $json = file_get_contents(QUIZFLOW_DATA);
         $data = json_decode($json, true);
 
         // get answers
-        $param['answers'] = [];
+        $param['answer'] = [];
         foreach ($_POST as $inputName => $userAnswer) {
             // sanitize input name and userAnswer
             if (preg_match('/^q_/', $inputName)) {
                 if (ctype_digit($userAnswer)) {
                     // iterate over questions
+                    $questionNumber = 1;
                     foreach ($data['questions'] as $question) {
                         // check if inputName is equal to question name
-                        if ($inputName == $question['name']) {
+                        if ($inputName == 'q_' . $questionNumber) {
                             // check answer
-                            $isCorrect = $userAnswer == $question['correctAnswer'] ? 'true' : 'false';
-                
+                            $isCorrect = ((int)$userAnswer - 1) == $question['correctAnswer'] ? 'true' : 'false';
+                    
                             // Add the answer to the array
-                            $param['answers'][] = [
+                            $param['answer'][] = [
                                 'name' => $inputName,
                                 'isCorrect' => $isCorrect
                             ];
-                
+                    
                             break;
                         }
+                        $questionNumber++;
                     }
                 }
             }
         }
 
         // insert answers
-        $query = 'INSERT INTO answers (code, time, answers) VALUES (:code, :time, :answers)';
+        $query = 'INSERT INTO answers (code, time, answer) VALUES (:code, :time, :answer)';
         $params = [
             'code' => $param['code'],
             'time' => $param['time'],
-            'answers' => $param['answers']
+            'answer' => json_encode($param['answer'])
         ];
         $dbAdapter->db_query($query, $params);
 
