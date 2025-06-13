@@ -1,17 +1,19 @@
 {
-    "intro": [
+    "intro_1": [
         "<p class='pb-8 font-bold text-2xl leading-normal'>Willkommen zum Cybersecurity Quiz!</p>",
         "<p>Testen Sie Ihr Wissen über Computersicherheit mit diesem Quiz.<br><br>",
+        "<p>Bitte wählen Sie den gewünschten Schwierigkeitsgrad.</p>"
+    ],
+    "intro_2": [
         "Das Quiz besteht aus 10 Fragen, jede Frage hat 3 Antwortmöglichkeiten, von denen nur eine richtig ist.<br><br>",
-        "Wählen Sie die Antwort, die Ihrer Meinung nach korrekt ist, und klicken Sie auf 'Weiter', um zur nächsten Frage zu gelangen. Um das Quiz zu starten, klicken Sie auf 'Start'</p>",
-        "<div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Start</a></div>"
+        "Wählen Sie die Antwort, die Ihrer Meinung nach korrekt ist, und klicken Sie auf 'Weiter', um zur nächsten Frage zu gelangen.</p>"
     ],
     "outro": [
         "<p class='pb-8 font-bold text-2xl leading-normal'>Vielen Dank für Ihre Teilnahme!</p>",
         "<p>Sie haben das Cybersecurity Quiz erfolgreich abgeschlossen.<br><br>",
         "Um Ihren Preis zu erhalten, zeigen Sie bitte Ihren persönlichen Code an unserem Stand vor.</p>"
     ],
-    "questions": [
+    "1": [
         {
             "question": "Welches der Passwörter ist das sicherste?",
             "answers": [
@@ -101,6 +103,190 @@
                 "Ein sicheres Passwort, das regelmäßig geändert wird"
             ],
             "correctAnswer": 0
+        }
+    ],
+    "2": [
+        {
+            "question": "Was ist ein typisches Ziel eines Man-in-the-Middle-Angriffs?",
+            "answers": [
+                "Ein Gerät vollständig zu zerstören",
+                "Netzwerkverkehr abzufangen oder zu manipulieren",
+                "Viren automatisch zu entfernen"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche dieser Maßnahmen erhöht die Sicherheit bei der Anmeldung deutlich?",
+            "answers": [
+                "Die gleiche PIN für alle Dienste verwenden",
+                "Zwei-Faktor-Authentifizierung verwenden",
+                "Passwort in einer Textdatei speichern"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was beschreibt eine Zero-Day-Schwachstelle?",
+            "answers": [
+                "Eine Schwachstelle, die nur an einem Tag im Jahr aktiv ist",
+                "Eine öffentlich bekannte Schwachstelle ohne verfügbaren Patch",
+                "Eine bisher unbekannte Schwachstelle, für die es noch keinen Patch gibt"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Was macht eine Firewall?",
+            "answers": [
+                "Sie löscht automatisch alle alten Dateien",
+                "Sie blockiert oder erlaubt Netzwerkverkehr nach definierten Regeln",
+                "Sie erhöht die Bildschirmhelligkeit bei Bedrohungen"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche Art von Angriff nutzt automatisierte Anfragen, um einen Dienst lahmzulegen?",
+            "answers": [
+                "DDoS (Distributed Denial of Service)",
+                "Phishing",
+                "Social Engineering"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "question": "Was ist eine häufige Eigenschaft von Phishing-Mails?",
+            "answers": [
+                "Sie enthalten keine Rechtschreibfehler",
+                "Sie versuchen, den Empfänger zur Herausgabe sensibler Daten zu bringen",
+                "Sie sind ausschließlich in PDF-Formaten"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche Sicherheitslücke wird typischerweise durch ungeprüften Benutzereingaben in Webformularen ausgenutzt?",
+            "answers": [
+                "Brute-Force-Angriff",
+                "SQL-Injection",
+                "Rootkit"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was ist das Ziel von Ransomware?",
+            "answers": [
+                "Daten zu verschlüsseln und Lösegeld zu verlangen",
+                "Software kostenlos zur Verfügung zu stellen",
+                "Hardware-Temperaturen zu senken"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "question": "Welcher dieser Begriffe steht für ein Verfahren zur Identitätsprüfung?",
+            "answers": [
+                "Hashing",
+                "Authentifizierung",
+                "Verschlüsselung"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche Dateiart ist am gefährlichsten, wenn sie aus unbekannter Quelle stammt?",
+            "answers": [
+                ".txt",
+                ".jpg",
+                ".exe"
+            ],
+            "correctAnswer": 2
+        }
+    ],
+    "3": [
+        {
+            "question": "Was ist der Hauptunterschied zwischen symmetrischer und asymmetrischer Verschlüsselung?",
+            "answers": [
+                "Bei symmetrischer Verschlüsselung wird kein Schlüssel verwendet",
+                "Bei asymmetrischer Verschlüsselung werden zwei verschiedene Schlüssel verwendet",
+                "Beide Verfahren verwenden denselben öffentlichen Schlüssel"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welcher Angriff nutzt Schwachstellen in der Speichersicherheit durch gezieltes Überschreiben des Speichers?",
+            "answers": [
+                "Cross-Site Scripting",
+                "Buffer Overflow",
+                "ARP Spoofing"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was passiert beim Privilege Escalation?",
+            "answers": [
+                "Ein Benutzer wird automatisch ausgeloggt",
+                "Ein Angreifer verschafft sich höhere Rechte, als ihm zustehen",
+                "Ein System stellt auf Energiesparmodus um"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was ist ein typisches Merkmal eines APT (Advanced Persistent Threat)?",
+            "answers": [
+                "Sehr kurzfristiger Angriff mit maximaler Lautstärke",
+                "Langfristiger, zielgerichteter und oft staatlich unterstützter Angriff",
+                "Zufällige Angriffe auf öffentlich zugängliche Server"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was bedeutet „Salting“ im Zusammenhang mit Passwortspeicherung?",
+            "answers": [
+                "Eine Backup-Methode für Passwörter",
+                "Die Verschlüsselung mit symmetrischen Algorithmen",
+                "Das Hinzufügen zufälliger Daten vor dem Hashen eines Passworts"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Was ist der Zweck eines Kerberos-Tickets?",
+            "answers": [
+                "Um Netzwerklatenz zu reduzieren",
+                "Um einem Benutzer kryptografisch sicheres Authentifizieren im Netzwerk zu ermöglichen",
+                "Um Dateien über FTP zu übertragen"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was beschreibt Clickjacking am besten?",
+            "answers": [
+                "Ein Angriff, bei dem ein Benutzer auf eine manipulierte, unsichtbare Schaltfläche klickt",
+                "Das Erfassen von Tastatureingaben",
+                "Der Versuch, Cookies zu löschen"
+            ],
+            "correctAnswer": 0
+        },
+        {
+            "question": "Was ist der Zweck von Honeypots in der Computersicherheit?",
+            "answers": [
+                "Einen sicheren Ort für Passwörter zu bieten",
+                "Angreifer anzulocken und deren Methoden zu analysieren",
+                "Ein Backup aller Daten zu erstellen"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Welche der folgenden Maßnahmen ist KEINE gute Praxis zur Sicherung von Webanwendungen?",
+            "answers": [
+                "Regelmäßige Sicherheitsupdates und Patches anwenden",
+                "Benutzereingaben niemals validieren",
+                "Verwendung von HTTPS für sichere Datenübertragung"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Was ist ein typisches Merkmal eines DDoS-Angriffs?",
+            "answers": [
+                "Er wird von einem einzelnen Computer ausgeführt",
+                "Er nutzt eine große Anzahl kompromittierter Systeme, um einen Dienst zu überlasten",
+                "Er zielt darauf ab, Passwörter zu stehlen"
+            ],
+            "correctAnswer": 1
         }
     ]
 }

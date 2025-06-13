@@ -1,8 +1,16 @@
 <?php
-    // use db_adapter
-    const APP_NAME = 'Quizflow';
-    include_once __DIR__ . '/includes/core/db_adapter.php';
-    $dbAdapter = new \Quizflow\Core\DatabaseAdapter();
+session_start();
+
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== TRUE) {
+    header('Location: login.php');
+    exit;
+}
+
+// use db_adapter
+const APP_NAME = 'Quizflow';
+include_once __DIR__ . '/includes/core/db_adapter.php';
+$dbAdapter = new \Quizflow\Core\DatabaseAdapter();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
