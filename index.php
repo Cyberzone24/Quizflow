@@ -179,18 +179,15 @@ if (isset($_GET['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
 
     echo "
         <p class='pb-8 font-bold text-2xl leading-normal'>Ihr Code: {$param['code']}</p>
-        <div class='flex justify-center'><a href='?start' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Nochmal spielen</a></div>
+        <div class='flex justify-center'><a href='./' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline'>Nochmal spielen</a></div>
     ";
+
+    session_destroy();
 
     echo '</div></div>';
 } else {
-    echo '<div class="container mx-auto w-[95%] md:w-[60%] m-12"><div class="md:w-full bg-white shadow-lg rounded-2xl p-8 flex flex-col gap-4">';
-
-    foreach ($data['intro'] as $introItem) {
-        echo $introItem;
-    }
-
-    echo '</div></div>';
+    session_destroy();
+    header('Location: ./');
 }
 
 ?>
