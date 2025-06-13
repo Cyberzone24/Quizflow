@@ -4,8 +4,9 @@
     // define APP_NAME
     const APP_NAME = 'Quizflow';
 
-    // import config
-    include_once __DIR__ . '/includes/core/config.php';
+    // use db_adapter
+    include_once __DIR__ . '/includes/core/db_adapter.php';
+    $dbAdapter = new \Quizflow\Core\DatabaseAdapter();
 
     // get questions
     $data = json_decode(file_get_contents(QUIZFLOW_DATA), true);
