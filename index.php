@@ -161,11 +161,12 @@ if (isset($_GET['submit']) && $_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // insert answers
-    $query = 'INSERT INTO answers (code, time, answer) VALUES (:code, :time, :answer)';
+    $query = 'INSERT INTO answers (code, time, answer, difficulty) VALUES (:code, :time, :answer, :difficulty)';
     $params = [
         'code' => $param['code'],
         'time' => $param['time'],
-        'answer' => json_encode($param['answer'])
+        'answer' => json_encode($param['answer']),
+        'difficulty' => $difficulty
     ];
     $dbAdapter->db_query($query, $params);
 

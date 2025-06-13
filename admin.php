@@ -53,37 +53,39 @@ $dbAdapter = new \Quizflow\Core\DatabaseAdapter();
     ?>
     
     <!-- Display the data in a table -->
-    <div class="m-4 bg-white shadow-lg rounded-2xl p-8 text-left">
-        <table class="w-full">
-            <tr>
-                <th class="p-2 border-b max-w-lg overflow-auto">Timestamp</th>
-                <th class="p-2 border-b max-w-lg overflow-auto">Code</th>
-                <th class="p-2 border-b max-w-lg overflow-auto">Time</th>
-                <th class="p-2 border-b max-w-lg overflow-auto">Correct Answers (%)</th>
-            </tr>
-            <?php foreach ($data as $entry): ?>
+        <div class="m-4 bg-white shadow-lg rounded-2xl p-8 text-left">
+            <table class="w-full">
                 <tr>
-                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['timestamp']) ? date('H:i:s \U\h\r, d.m.Y', strtotime($entry['timestamp'])) : ''; ?></td>
-                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['code']) ? str_pad($entry['code'], 6, '0', STR_PAD_LEFT) : ''; ?></td>
-                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['time']) ? $entry['time'] : ''; ?></td>
-                    <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['correctPercentage']) ? $entry['correctPercentage'] : ''; ?></td>
+                    <th class="p-2 border-b max-w-lg overflow-auto">Timestamp</th>
+                    <th class="p-2 border-b max-w-lg overflow-auto">Code</th>
+                    <th class="p-2 border-b max-w-lg overflow-auto">Time</th>
+                    <th class="p-2 border-b max-w-lg overflow-auto">Difficulty</th>
+                    <th class="p-2 border-b max-w-lg overflow-auto">Correct Answers (%)</th>
                 </tr>
-                <tr>
-                    <td colspan="4" class="p-2 border-b max-w-lg overflow-auto">
-                        <details>
-                            <summary>View Answers</summary>
-                            <ul>
-                                <?php if (isset($entry['answers']) && is_array($entry['answers'])): ?>
-                                    <?php foreach ($entry['answers'] as $answer): ?>
-                                        <li><?php echo $answer['name'] . ': ' . ($answer['isCorrect'] == 'true' ? 'Correct' : 'Incorrect'); ?></li>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </ul>
-                        </details>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
+                <?php foreach ($data as $entry): ?>
+                    <tr>
+                        <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['timestamp']) ? date('H:i:s \U\h\r, d.m.Y', strtotime($entry['timestamp'])) : ''; ?></td>
+                        <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['code']) ? str_pad($entry['code'], 6, '0', STR_PAD_LEFT) : ''; ?></td>
+                        <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['time']) ? $entry['time'] : ''; ?></td>
+                        <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['difficulty']) ? htmlspecialchars($entry['difficulty']) : ''; ?></td>
+                        <td class="p-2 border-b max-w-lg overflow-auto"><?php echo isset($entry['correctPercentage']) ? $entry['correctPercentage'] : ''; ?></td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" class="p-2 border-b max-w-lg overflow-auto">
+                            <details>
+                                <summary>View Answers</summary>
+                                <ul>
+                                    <?php if (isset($entry['answers']) && is_array($entry['answers'])): ?>
+                                        <?php foreach ($entry['answers'] as $answer): ?>
+                                            <li><?php echo $answer['name'] . ': ' . ($answer['isCorrect'] == 'true' ? 'Correct' : 'Incorrect'); ?></li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </ul>
+                            </details>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
+        </div>
 </body>
 </html>
