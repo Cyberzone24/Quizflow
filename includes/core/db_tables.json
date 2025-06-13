@@ -4,6 +4,7 @@
         "timestamp": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
         "code": "INT",
         "time": "FLOAT",
-        "answer": "VARCHAR(1020)"
+        "answer": "VARCHAR(1020)",
+        "difficulty": "VARCHAR(32)"
     }
 }
