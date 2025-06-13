@@ -28,6 +28,9 @@ $(document).ready(function() {
                     label.addClass('border-red-500');
                 }
             });
+
+            // Disable all radio buttons in this fieldset
+            fieldset.find('input[type=radio]').prop('disabled', true);
         }
     });
 
