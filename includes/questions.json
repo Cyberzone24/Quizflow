@@ -226,13 +226,13 @@
             "correctAnswer": 1
         },
         {
-            "question": "Was ist ein typisches Merkmal eines APT (Advanced Persistent Threat)?",
+            "question": "Wofür steht TPM in der Computersicherheit?",
             "answers": [
-                "Sehr kurzfristiger Angriff mit maximaler Lautstärke",
-                "Langfristiger, zielgerichteter und oft staatlich unterstützter Angriff",
-                "Zufällige Angriffe auf öffentlich zugängliche Server"
+                "Trusted Platform Module",
+                "Total Protection Mechanism",
+                "Temporary Password Management"
             ],
-            "correctAnswer": 1
+            "correctAnswer": 0
         },
         {
             "question": "Was bedeutet „Salting“ im Zusammenhang mit Passwortspeicherung?",
