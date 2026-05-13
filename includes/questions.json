@@ -1,4 +1,18 @@
 {
+    "catalogs": {
+        "1": {
+            "label": "Einfach",
+            "multiplier": 1
+        },
+        "2": {
+            "label": "Mittel",
+            "multiplier": 1.5
+        },
+        "3": {
+            "label": "Schwer",
+            "multiplier": 2
+        }
+    },
     "intro_1": [
         "<p class='pb-8 font-bold text-2xl leading-normal'>Willkommen zum Cybersecurity Quiz!</p>",
         "<p>Testen Sie Ihr Wissen über Computersicherheit mit diesem Quiz.<br><br>",

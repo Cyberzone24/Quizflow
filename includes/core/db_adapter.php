@@ -98,6 +98,11 @@ class DatabaseAdapter {
                 // execute query
                 $this->db_query($query, []);
 
+                foreach ($columns as $column => $column_type) {
+                    $alterQuery = "ALTER TABLE $db_table ADD COLUMN IF NOT EXISTS $column $column_type";
+                    $this->db_query($alterQuery, []);
+                }
+
                 // commit transaction
                 $this->pdo->commit();
             } catch (\Exception $e) {

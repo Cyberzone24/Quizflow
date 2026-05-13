@@ -3,8 +3,17 @@
         "uuid": "UUID DEFAULT gen_random_uuid() NOT NULL",
         "timestamp": "TIMESTAMP DEFAULT CURRENT_TIMESTAMP",
         "code": "INT",
+        "player_name": "VARCHAR(80)",
         "time": "FLOAT",
         "answer": "VARCHAR(1020)",
-        "difficulty": "VARCHAR(32)"
+        "difficulty": "VARCHAR(32)",
+        "difficulty_label": "VARCHAR(64)",
+        "multiplier": "FLOAT DEFAULT 1",
+        "correct_answers": "INT DEFAULT 0",
+        "total_questions": "INT DEFAULT 0",
+        "score": "FLOAT DEFAULT 0",
+        "moderation_status": "VARCHAR(16) DEFAULT 'approved'",
+        "moderation_note": "VARCHAR(255)",
+        "flagged_at": "TIMESTAMP"
     }
 }
